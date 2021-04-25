@@ -1,0 +1,420 @@
+﻿Facultad de Ingeniería  
+Bernard Wand-Polak
+Cuareim 1451
+11.100  Montevideo, Uruguay
+Tel. 2902 15 05 Fax 2908 13 70
+www.ort.edu.uy
+________________
+
+
+
+
+
+
+EVALUACIÓN
+	Obligatorio
+	GRUPO    
+	Todos
+	FECHA
+	1. 22/3
+	MATERIA
+	Estructura de Datos y Algoritmos 2
+	CARRERA
+	Ingeniería en Sistemas
+	CONDICIONES
+	- Puntos:  Máximo: 30     Mínimo: 1
+- Fecha máxima de entrega: 21/06
+
+
+LA ENTREGA SE REALIZA EN FORMA ONLINE EN ARCHIVO NO MAYOR A 40MB EN FORMATO ZIP, RAR O PDF.
+
+
+IMPORTANTE:
+- Inscribirse 
+- Formar grupos de hasta dos personas.
+- Subir el trabajo a Gestión antes de la hora indicada, ver hoja al final del documento: “RECORDATORIO”
+
+
+	
+
+________________
+
+
+Obligatorio
+El obligatorio de Estructuras de Datos y Algoritmos 2, para el semestre 1 de 2021, está compuesto por un conjunto de 12 problemas a resolver.
+
+
+El desarrollo del obligatorio:
+* Se deberá realizar en grupos de 2 estudiantes.
+* Se podrá utilizar tanto C++ (C++11) como Java (jdk8). 
+Para asegurar que utilizan C++11 deberán tener instalado el compilador C++ de GNU e invocar la siguiente orden: g++ -std=c++11 … 
+* No se puede usar ninguna librería, clase, estructura, función o variable no definida por el estudiante, a excepción de <iostream>, <string> y <cstring> para C++. y System.in, System.out y String para Java.
+* Si se quiere usar algo que no sea lo listado anteriormente, consultar previamente al profesor.
+* Se deberá utilizar el formato de “miSolucion < input > output” trabajado durante el curso.
+* La cátedra proveerá un conjunto de casos de prueba, pares de entrada y salida esperada. Se deberá comparar la salida de la solución contra una salida esperada.
+* La solución de cada ejercicio deberá estar contenida en un único archivo.
+
+
+La entrega:
+   * Se deberá entregar un zip, únicamente con el código fuente de cada ejercicio, en una estructura de archivos como la siguiente:
+├── ejercicio1.cpp
+├── ejercicio2.cpp
+… 
+└── ejercicio12.cpp
+
+
+La corrección:
+   * La corrección implica la verificación contra la salida esperada, así también como la corrección del código fuente para verificar que se cumplan los requerimientos solicitados (órdenes de tiempo de ejecución, usos de estructuras o algoritmos en particular, etc.).
+   * Se verificarán TODOS los casos de prueba. Si el programa no termina para un caso de prueba, puede implicar la pérdida de puntos.
+   * Si el código fuente se encuentra en un estado que dificulta la comprensión, podrá perder puntos.
+   * Se utilizará MOSS para detectar copias.
+
+
+La defensa:
+   * Luego de la entrega, se realizará una defensa de autoría a cada estudiante de manera individual.
+________________
+1. SORTING        
+Nombre de archivo: ejercicio1.cpp/Ejercicio1.java
+Se desea ordenar un conjunto de números enteros, no acotados. Se solicita que implemente un algoritmo basado en el uso de un heap.
+Restricciones: O(NLogN)
+Formato de entrada
+N
+n1
+n2
+… 
+nN
+	
+
+La primera línea indica la cantidad de elementos a ordenar. Las siguientes N líneas son los elementos a ordenar.
+Formato de salida
+La salida contendrá N líneas, siendo estos los elementos ordenados de menor a mayor.
+
+
+Nota: podría haber repetidos.
+
+
+
+
+
+
+
+2. Verificador de Heap        
+Nombre de archivo: ejercicio2.cpp/Ejercicio2.java
+Dada una secuencia de números se quiere saber si podría ser una representación de un Min Heap.
+Restricciones: O(N)
+Formato de entrada
+N
+n1
+n2
+… 
+nN
+	
+
+La primera línea indica la cantidad de elementos del heap. Las siguientes N líneas son los elementos de 0 a N-1.
+Formato de salida
+La salida contendrá 1 sola linea:
+“1” en el caso de que la entrada representa un Min Heap.
+“0” en caso contrario.
+Ejemplo de entrada  
+7
+6
+12
+22
+34
+21
+41
+55
+
+
+
+
+
+
+	3. Contador doble       
+Nombre de archivo: ejercicio3.cpp/Ejercicio3.java
+Dada una secuencia de palabras se desea saber aquellas que aparecieron dos veces.
+Restricciones: O(N) promedio
+Formato de entrada
+N
+palabra1
+palabra2
+… 
+palabraN
+	
+
+La primera línea indica la cantidad de palabras a leer. Las siguientes N líneas son el conjunto de palabras a trabajar.
+Formato de salida
+La salida contendrá 1 línea, que es la cantidad de palabras que ocurrieron dos veces en el formato de entrada.
+
+Ejemplo de entrada/salida
+7
+AAA
+BAB
+ABC
+AAA
+ABC
+BCA
+BBB
+	2
+	
+
+
+
+
+
+4
+AAA
+AAA
+AAA
+BAC
+	0
+	
+
+3
+AAA
+BBB
+CCC
+	0
+	
+
+
+
+
+
+
+
+
+
+Formato de entrada de entrada de ejercicios de grafos
+Todos los ejercicios de grafos tendrán la misma codificación para los grafos. Es decir, una parte del formato de entrada, la que corresponde a la información del grafo será siempre igual. A continuación se describe:
+
+
+V
+E
+v1 w1 [c1]
+v2 w2 [c2]
+… 
+vi wi [ci]
+… 
+vE wE [cE]
+	
+
+Cada grafo comienza con la cantidad de vértices, V. Los vértices siempre serán números, a menos que se especifique lo contrario. Por ejemplo, si V=3, entonces los vértices serán: {1, 2, 3} (siempre serán numerados a partir de 1).
+
+
+La siguiente línea corresponde a la cantidad de aristas, E. Las siguientes E líneas en el formato v w c corresponden a las aristas (v,w) con costo c si el grafo es ponderado, o en el formato v w, correspondiente a la arista (v,w) si no es ponderado. Es decir, c es opcional ([c]). 
+
+
+El grafo será dirigido o no, dependiendo el problema en particular. En caso de ser no dirigido solo solo se pasará un sentido de la arista, es decir, (v,w) pero no (w,v) (queda implícito). Por ejemplo:
+
+
+2
+1
+1 2
+	
+
+Representa al grafo completo de dos vértices y aristas: {(1,2), (2,1)}.
+4. Grafo cíclico       
+Nombre de archivo: ejercicio4.cpp/Ejercicio4.java
+Dado un grafo disperso, dirigido y no ponderado, saber si dicho grafo contiene al menos un ciclo.
+
+Restricciones: O(V+A)
+Formato de entrada
+(ver formato de entrada)
+Formato de salida
+Solo contendrá una sola línea:
+“1” en el caso de que el grafo sea cíclico.
+“0” en caso contrario.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5. CAMINO + CORTO        Nom. de arch.: ejercicio5.cpp/Ejercicio5.java
+Dado un grafo dirigido, ponderado (sin costos negativos) y denso implementar un algoritmo que devuelve el costo total de los caminos más cortos entre todo par de vértices. 
+
+Restricciones: O(V^3)
+Formato de entrada
+(ver formato de entrada)
+Formato de salida
+La salida contendrá V*V líneas, donde cada línea contendrá el costo total Ci,j de ir desde vi hasta j, o -1 si no existe tal camino o i=j.
+Los costos Ci,j deben aparecer ordenados en el archivo de salida según el orden lexicográfico del par (i,j), con 1≤i≤N y 1≤j≤V.
+
+
+C1,1 si hay un camino de v1 a 1; -1 si no o v1=1
+C1,2 si hay un camino de v1 a 2; -1 si no o v1=2
+…
+C1,i si hay un camino de v1 a i; -1 si no o vi=i
+…
+C1,V si hay un camino de v1 a V; -1 si no o vi=V
+…
+C2,1 si hay un camino de v2 a 1; -1 si no o vi=1
+… 
+Ck,V si hay un camino de vk a V; -1 si no o vk=V
+… 
+Cv,V si hay un camino de vN a V; -1 si no o vN=V
+	
+
+
+
+
+
+
+
+
+
+6. Grafo bipartita      
+Nombre de archivo: ejercicio6.cpp/Ejercicio6.java
+Dado un grafo disperso, no dirigido y no ponderado, saber si se puede “pintar” cada uno de los vértices con alguno de dos colores disponibles, siempre y cuando ningún vértice puede ser adyacente a uno de su mismo color.
+
+Restricciones: O(V+A)
+Ref: https://en.wikipedia.org/wiki/Bipartite_graph 
+
+
+Ejemplo bipartita:
+
+
+  
+
+
+
+Ejemplo no-bipartita:
+  
+
+Formato de entrada
+(ver formato de entrada)
+Formato de salida
+Solo contendrá una sola línea:
+“1” en el caso de que el grafo sea bipartita.
+“0” en caso contrario.
+
+
+
+
+7. Componentes fuertemente conexas
+        Nom. de arch.: ejercicio7.cpp/Ejercicio7.java
+Dado un grafo disperso, dirigido y no ponderado, se quiere saber la cantidad de componente fuertemente conexas que tiene
+
+Restricciones: O(V+A)
+Ref: https://en.wikipedia.org/wiki/Strongly_connected_component 
+Formato de entrada
+(ver formato de entrada)
+Formato de salida
+La salida solo contendrá una línea con la cantidad de componentes fuertemente conexas que tiene.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8. PT. DE ART.        Nom. de archivo: ejercicio8.cpp/Ejercicio8.java
+Implementar un algoritmo que, dado un grafo no dirigido, no ponderado, conexo y disperso, encuentre todos los puntos de articulación del mismo.
+
+
+Un punto de articulación es un vértice que, al removerlo (junto con todas las aristas que pasan por él), desconecta el grafo (pasa a ser no conexo ignorado dicho vértice).
+
+
+Restricciones: O(V*(V+A))
+Ref: https://es.wikipedia.org/wiki/V%C3%A9rtice_de_corte 
+Formato de entrada
+(Ver Formato de entrada)
+Formato de salida
+La salida contendrá M líneas, donde cada línea contendrá el número del vértice que es un punto de articulación, ordenado de menor a mayor
+
+
+________________
+RECORDATORIO: IMPORTANTE PARA LA ENTREGA
+
+
+      * Obligatorios  (Cap.IV.1, Doc. 220)
+
+
+La entrega de los obligatorios será en formato digital online, a excepción de algunas materias que se entregarán en Bedelía y en ese caso recibirá información específica en el dictado de la misma.
+
+
+Los principales aspectos a destacar sobre la entrega online de obligatorios son:
+      1. La entrega se realizará desde gestion.ort.edu.uy
+      2. Previo a la conformación de grupos cada estudiante deberá estar inscripto a la evaluación. Sugerimos realizarlo con anticipación.
+      3. Uno de los integrantes del grupo de obligatorio será el administrador del mismo y es quien formará el equipo y subirá la entrega 
+      4. Cada equipo debe entregar un único archivo en formato zip o rar  (los documentos de texto deben ser pdf, y deben ir dentro del zip o rar)
+      5. El archivo a subir debe tener un tamaño máximo de 40mb
+      6. Les sugerimos realicen una 'prueba de subida' al menos un día antes, donde conformarán el 'grupo de obligatorio'. 
+      7. La hora tope para subir el archivo será las 21:00 del día fijado para la entrega.
+      8. La entrega se podrá realizar desde cualquier lugar (ej. hogar del estudiante, laboratorios de la Universidad, etc)
+      9. Aquellos de ustedes que presenten alguna dificultad con su inscripción o tengan inconvenientes técnicos, por favor pasar por la oficina del Coordinador  o por Coordinación adjunta antes de las 20:00hs. del día de la entrega 
+
+
+Si tuvieras una situación particular de fuerza mayor, debes dirigirte con suficiente antelación al plazo de entrega, al Coordinador de Cursos o Secretario Docente.
