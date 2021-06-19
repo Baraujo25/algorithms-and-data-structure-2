@@ -11,53 +11,60 @@ public class Ejercicio4 {
 		System.out.println("1");
 	}
 
-	public static Grafo initGrafo(Grafo g, Scanner out, int A) {
+	public static Grafo initGrafo() {
 		Scanner out = new Scanner(System.in);
 		int V = out.nextInt();
 		int A = out.nextInt();
-		Grafo grafo = new Matriz(V, false);
+		Grafo grafo = new ListaAdyacencia(V, true);
 
 		for( int i = 0; i <A; i++ ) {
-			int[] arista = out.next().split();
-			g.agregarArista(arista[0], arista[1]);
+			grafo.agregarArista(Integer.parseInt(out.next()), Integer.parseInt(out.next()));
 		}
-
+		out.close();	
 		return grafo;
 	}
 
 	public static boolean tieneOT(Grafo grafo) {
 		boolean[] visitados = new boolean[grafo.V +1];
-		int[] gradoEntrada = initGradoEntrada(grafo.V);
+		int[] gradoEntrada = initGradoEntrada(grafo);
 		
 		for(int i = 1; i<=grafo.V; i++) {
 
-			vertice = obtenerVerticeGradoEntradaCeroNoVisitado(grafo, gradoEntrada, visitados);
+			int vertice = obtenerVerticeGradoEntradaCeroNoVisitado(grafo, gradoEntrada, visitados);
 			if (vertice==-1) {
-				return true;
+				return false;
 			}
-			visitados[i] = true;
-			for( int j = 1; j <=grafo.V; j++) {
-				if (esAdyacente(j, i, g)) {
-					gradoEntrada--;
-				}
+			visitados[vertice] = true;
+			ListaArista adyacentes = grafo.adyacentesA(vertice);
+			while (adyacentes != null) {
+				Arista a = adyacentes.getDato();
+				gradoEntrada[a.getDestino()]--;
+				adyacentes = adyacentes.getSiguiente();
 			}
 		}
-		return false;
+		return true;
 	}
 	
-	public static int[] initGradoEntrada(int V) {
-		int[] gEntradas = new int[V+1];
-		for(int i = 1; i<=V; i++) {
-			gEntradas[i] = Intger.MAX_VALUE;
+	public static int[] initGradoEntrada(Grafo grafo) {
+		int[] gEntradas = new int[grafo.V+1];
+		
+		for(int i = 1; i <= grafo.V; i++) {
+
+			ListaArista adyacentes = grafo.adyacentesA(i);
+			while (adyacentes != null) {
+				Arista a = adyacentes.getDato();
+				gEntradas[a.getDestino()]++;
+				adyacentes = adyacentes.getSiguiente();
+			}
 		}
 		return gEntradas;
 	}
-		
+
 	public static int obtenerVerticeGradoEntradaCeroNoVisitado(Grafo grafo,
 			int[] gradoEntrada, boolean[] visitados) {
 		
 		for(int i = 1; i<gradoEntrada.length; i++) {
-			if (!visitados[i] && gradoEntrada[i] == 0) {
+			if (gradoEntrada[i] == 0 && !visitados[i]) {
 				return i;
 			}
 		}
@@ -65,12 +72,13 @@ public class Ejercicio4 {
 	}
 
 	public static boolean esAdyacente(int v1, int v2, Grafo grafo) {
-		ListaArista adyacentes = g.adyacentesA(v1);
+		ListaArista adyacentes = grafo.adyacentesA(v1);
 		while(adyacentes!=null) {
 			Arista ar = adyacentes.getDato();
 			if (ar.getDestino() == v2) {
 				return true;
 			}
+			adyacentes = adyacentes.getSiguiente();
 		}
 		return false;
 	}
@@ -106,6 +114,10 @@ public class Ejercicio4 {
 
 		public Arista getDato() {
 			return this.dato;
+		}
+
+		public ListaArista getSiguiente() {
+			return sig;
 		}
 	}
 
@@ -153,46 +165,6 @@ public class Ejercicio4 {
 		}	
 
 
-	}
-
-	public static class Matriz extends Grafo {
-
-		private int[][] grafo;	
-
-		public Matriz(int V, boolean esDirigido) {
-			super(V, esDirigido);
-			this.grafo = new int[V][V];
-			initGrafo();
-		}
-
-		private void initGrafo() {
-			for ( int i = 1; i <= super.V; i ++) {
-				for ( int j = 1; j <= super.V; j++) {
-					grafo[i][j] = Integer.MAX_VALUE;
-				}
-			}
-		}
-
-		@Override
-		protected ListaArista adyacentesA(int vertice) {
-			ListaArista listaArista = null;
-
-			for( int i = 1; i<=super.V; i++) {
-				if (this.grafo[vertice][i] != Integer.MAX_VALUE) {
-					Arista arista = new Arista(vertice, i, this.grafo[vertice][i]);
-					listaArista = new ListaArista(arista, listaArista);
-				}
-			}
-			return listaArista;
-		}	
-
-		@Override
-		protected void agregarArista(int v, int w, int peso) {
-			this.grafo[v][w] = peso;
-			if (!super.esDirigido) {
-				this.grafo[w][v] = peso;
-			}
-		}
 	}
 
 }
