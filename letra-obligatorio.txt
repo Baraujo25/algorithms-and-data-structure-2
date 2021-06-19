@@ -98,6 +98,23 @@ Nota: podría haber repetidos.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 2. Verificador de Heap        
 Nombre de archivo: ejercicio2.cpp/Ejercicio2.java
 Dada una secuencia de números se quiere saber si podría ser una representación de un Min Heap.
@@ -132,7 +149,7 @@ Ejemplo de entrada
 
 	3. Contador doble       
 Nombre de archivo: ejercicio3.cpp/Ejercicio3.java
-Dada una secuencia de palabras se desea saber aquellas que aparecieron dos veces.
+Dada una secuencia de palabras se desea saber aquellas que aparecieron exactamente dos veces.
 Restricciones: O(N) promedio
 Formato de entrada
 N
@@ -376,10 +393,6 @@ La salida solo contendrá una línea con la cantidad de componentes fuertemente 
 
 
 
-
-
-
-
 8. PT. DE ART.        Nom. de archivo: ejercicio8.cpp/Ejercicio8.java
 Implementar un algoritmo que, dado un grafo no dirigido, no ponderado, conexo y disperso, encuentre todos los puntos de articulación del mismo.
 
@@ -393,6 +406,173 @@ Formato de entrada
 (Ver Formato de entrada)
 Formato de salida
 La salida contendrá M líneas, donde cada línea contendrá el número del vértice que es un punto de articulación, ordenado de menor a mayor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9. Número sin pareja        
+Nom. de archivo: ejercicio9.cpp/Ejercicio9.java
+Dado un array de números ordenados, debe encontrar aquel número que solo aparece una vez (los demás aparecen dos veces).
+
+
+arr = [2,2,5,5,7,7,10,10,11,14,14,16,16]  -> devuelve 11
+
+
+Restricciones:
+      * O(LgN) temporal (siendo N el tamaño del array)
+      * O(1) espacial (sin tener en cuenta el array)
+      * Debe realizarse con la táctica dividir y conquistar
+Formato de entrada
+N
+n1
+n2
+… 
+nN
+	
+
+La primera línea (N) es la cantidad de elementos del array y las siguientes N líneas son los elementos del array.
+Formato de salida
+Contendrá 1 sola línea con el número sin pareja.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10. Aeropuerto
+Nom. de archivo: ejercicio10.cpp/Ejercicio10.java
+Se está construyendo un nuevo aeropuerto y no se sabe cuántas plataformas se deben construir. Lo que se sabe son los horarios de llegada y salida de cada avión. Se sabe además, que en cada plataforma solo puede haber un avión a la vez y que se quiere saber la cantidad mínima de plataformas para poder operar.
+
+
+Restricciones:
+      * O(NLgN) temporal (siendo N la cantidad de vuelos)
+      * O(N) espacial (siendo N la cantidad de vuelos)
+      * Debe realizarse con la táctica greedy
+Formato de entrada
+N
+ll1 s1
+ll2 s2
+… 
+llN sN
+	
+
+La primera línea (N) es la cantidad de elementos de vuelos, las siguientes N líneas es la información de horarios de llegada y partida de cada avion.
+Formato de salida
+Contendrá 1 sola línea con la cantidad mínima de líneas para poder operar.
+
+
+Nota: Los horarios no tienen ningún orden en particular.
+
+
+
+
+
+
+
+
+11. A último momento
+Nom. de archivo: ejercicio11.cpp/Ejercicio11.java
+El obligatorio de Estructuras de datos y algoritmos 3 es muy similar al de su materia antecesora, con la pequeña diferencia es que no todos los ejercicios tienen el mismo puntaje.
+
+
+Un día antes de la entrega, el profesor le recuerda que la entrega de todos los archivos no debe superar los S MB (megabytes) ni las L líneas de código entre todos ellos.
+
+
+Como usted olvidó este detalle y no tiene tiempo a refactorizar su código para que cumpla con las restricciones, decide elegir aquellos ejercicios/archivos que le garanticen un mejor puntaje.
+
+
+De cada ejercicio/archivo, usted sabe su tamaño, cantidad de líneas de código y el puntaje.
+
+
+Restricciones:
+      * O(N*S*L) temporal y espacial
+      * Debe realizarse con la táctica de programación dinámica.
+Formato de entrada
+N
+S
+L
+t1 l1 p1
+t2 l2 p2
+… 
+tN lN pN
+1   3  5 - 0 mochila[0][0] = 1;mochila[0][1] = 3; mochila[0][0] = 5;
+
+La primera línea (N) es la cantidad de archivos, la segunda (S) y tercera (L) es la cantidad máxima de tamaño y líneas de código respectivamente para la entrega.
+Por último siguen N líneas con la información de tamaño, líneas de código y puntaje de cada archivo/entrega.
+Formato de salida
+Contendrá 1 sola línea con el puntaje máximo que se podría obtener dada la entrega realizada.
+
+
+Nota: Cada ejercicio es un archivo para la entrega.
+________________
+12. A último momento (BackTracking)
+Nom. de archivo: ejercicio12.cpp/Ejercicio12.java
+Usted se da cuenta que se perdió la clase de Programación Dinámica del curso por asistir a un recital por Zoom de Nestor en Bloque. Negoció con el profesor y éste lo autorizó a realizar el ejercicio 11 con BackTracking.
+
+
+Restricciones:
+      * Debe realizarse con la táctica de backtracking.
+Formato de entrada
+N
+S
+L
+t1 l1 p1
+t2 l2 p2
+… 
+tN lN pN
+	
+
+La primera línea (N) es la cantidad de archivos, la segunda (S) y tercera (L) es la cantidad máxima de tamaño y líneas de código respectivamente para la entrega.
+Por último siguen N líneas con la información de tamaño, líneas de código y puntaje de cada archivo/entrega.
+Formato de salida
+Contendrá 1 sola línea con el puntaje máximo que se podría obtener dada la entrega realizada.
+
+
+Nota: Cada ejercicio es un archivo para la entrega.
 
 
 ________________
