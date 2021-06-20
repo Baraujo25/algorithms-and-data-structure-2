@@ -6,6 +6,8 @@ public class Ejercicio12{
 
 	public static void main(String[] args) {
 	    Scanner out = new Scanner(System.in);
+	    	// Manejamos un array para poder modificar por referencia.
+		// Integer.class no tuvo efecto.
 		int[]  mejorPuntaje = {0};
 		int[] puntajeCandidato = {0};
 
@@ -20,74 +22,83 @@ public class Ejercicio12{
 			tamanios[n] = out.nextInt();
 			lineas[n] = out.nextInt();
 			puntajes[n] = out.nextInt();
-		//	System.out.println(String.format("archivo %d tamanio %d linea %d puntaje %d", n, tamanios[n], lineas[n], puntajes[n]));
 		}
 		int[] tamanioActual = {S};
 		int[] lineaActual = {L};
 
         mochilaBT(0, tamanioActual, lineaActual, puntajeCandidato,mejorPuntaje,tamanios,lineas,puntajes);
-        //(int archivoHasta, int tamanioActual, int lineasActual, int puntajeCandidato, int mejorPuntaje, int [] tamanios, int [] lineas, int [] puntajes ){
 	System.out.println(mejorPuntaje[0]);
     }
 
-    public static void modificarPuntaje(Integer n) {
-	    n = new Integer(2);
-	}
-
-    static boolean esUnObjetoValido(int archivoHasta, int [] puntajes)
-    {
+    public static boolean esUnObjetoValido(int archivoHasta, int [] puntajes) {
         return archivoHasta < puntajes.length;
     }
-    static boolean puedoPonerElArchivo(int archivoHasta, int[] tamanioActual, int[] lineasActual, int[] tamanios,int[] lineas)
-    {
+
+    public static boolean puedoPonerElArchivo(int archivoHasta, int[]
+		    tamanioActual, int[] lineasActual, int[] tamanios,int[]
+		    lineas) {
         
         return ((tamanioActual[0] >= tamanios[archivoHasta]) && (lineasActual[0] >= lineas[archivoHasta]));
         
     }
-    static void colocarTentativamenteElArchivo(int archivoHasta, int[] tamanioActual, int[] lineasActual, int[] puntajeCandidato,int[] tamanios,int[] lineas, int [] puntajes)
-    {
+    public static void colocarTentativamenteElArchivo(int archivoHasta, int[]
+		    tamanioActual, int[] lineasActual, int[]
+		    puntajeCandidato,int[] tamanios,int[] lineas, int []
+		    puntajes) {
         tamanioActual[0] -= tamanios[archivoHasta];
         lineasActual[0] -= lineas[archivoHasta];
         puntajeCandidato[0] += puntajes[archivoHasta];
     }
-    static void retirarElArchivo(int archivoHasta, int[] tamanioActual, int[] lineasActual, int[] puntajeCandidato,int[] tamanios,int[] lineas,int [] puntajes)
-    {
+    public static void retirarElArchivo(int archivoHasta, int[] tamanioActual,
+		    int[] lineasActual, int[] puntajeCandidato,int[]
+		    tamanios,int[] lineas,int [] puntajes) {
         tamanioActual[0] += tamanios[archivoHasta];
         lineasActual[0] += lineas[archivoHasta];
         puntajeCandidato[0] -= puntajes[archivoHasta];
     }
-    static boolean esSolucion()
-    {
+
+    public static boolean esSolucion() {
         return true; // todas son soluciones
     }
-    static boolean esMejorSolucion(int[] puntajeCandidato, int[] mejorPuntaje)
-    {
+
+    public static boolean esMejorSolucion(int[] puntajeCandidato, int[] mejorPuntaje) {
         return (puntajeCandidato[0] > mejorPuntaje[0]);
     }
 
-    public static void mochilaBT(int archivoHasta, int[] tamanioActual, int[] lineasActual, int[] puntajeCandidato, int[] mejorPuntaje, int [] tamanios, int [] lineas, int [] puntajes ){
-    if (esUnObjetoValido(archivoHasta, puntajes))
-    {
-                if (puedoPonerElArchivo(archivoHasta, tamanioActual, lineasActual,tamanios,lineas))
-                {
+    public static void mochilaBT(int archivoHasta, int[] tamanioActual, int[]
+		    lineasActual, int[] puntajeCandidato, int[] mejorPuntaje,
+		    int [] tamanios, int [] lineas, int [] puntajes ){ 
 
-                    colocarTentativamenteElArchivo(archivoHasta, tamanioActual, lineasActual, puntajeCandidato,tamanios,lineas, puntajes);
+	if (esUnObjetoValido(archivoHasta, puntajes)) {
+		if (puedoPonerElArchivo(archivoHasta, tamanioActual, lineasActual,tamanios,lineas)) {
 
-                    if (esSolucion() && esMejorSolucion(puntajeCandidato, mejorPuntaje))
-                    {
-                        mejorPuntaje[0] = puntajeCandidato[0]; 
-                    }
-                    // exploro el siguiente objeto
-                    mochilaBT(archivoHasta + 1, tamanioActual, lineasActual, puntajeCandidato, mejorPuntaje, tamanios, lineas, puntajes);
-                    // deshacemos el movimiento
-                    retirarElArchivo(archivoHasta, tamanioActual, lineasActual, puntajeCandidato,tamanios, lineas, puntajes);
-                    mochilaBT(archivoHasta + 1, tamanioActual, lineasActual, puntajeCandidato, mejorPuntaje, tamanios, lineas, puntajes);
-                }
-                else
-                {
-                    mochilaBT(archivoHasta + 1, tamanioActual, lineasActual, puntajeCandidato, mejorPuntaje,tamanios, lineas, puntajes);       
-                }
-            }
+			colocarTentativamenteElArchivo(archivoHasta, tamanioActual,
+				lineasActual,
+				puntajeCandidato,tamanios,lineas,
+				puntajes);
+
+			if (esSolucion() && esMejorSolucion(puntajeCandidato, mejorPuntaje)) {
+				mejorPuntaje[0] = puntajeCandidato[0]; 
+			}
+			// exploro el siguiente objeto
+			mochilaBT(archivoHasta + 1, tamanioActual, lineasActual,
+				puntajeCandidato, mejorPuntaje, tamanios,
+				lineas, puntajes);
+			// deshacemos el movimiento
+			retirarElArchivo(archivoHasta, tamanioActual, lineasActual,
+				puntajeCandidato,tamanios, lineas,
+				puntajes); 
+
+			mochilaBT(archivoHasta + 1,tamanioActual, lineasActual,
+				puntajeCandidato, mejorPuntaje,
+				tamanios, lineas, puntajes);
+
+		} else {
+			mochilaBT(archivoHasta + 1, tamanioActual, lineasActual,
+				puntajeCandidato, mejorPuntaje,tamanios,
+				lineas, puntajes);       
+		}
+	}
     }
 }    
     
